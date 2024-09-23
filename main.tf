@@ -153,3 +153,4 @@ resource "aws_ecs_service" "app_service" {
   }
 }
 
+
