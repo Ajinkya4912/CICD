@@ -32,6 +32,14 @@ jobs:
           docker build -t $IMAGE_URI .
           docker push $IMAGE_URI
 
+          - name: Build and push Docker image
+  run: |
+    IMAGE_URI=152327922359.dkr.ecr.ap-south-1.amazonaws.com/cicd-app:latest
+    docker build -t $IMAGE_URI ./docker
+   # Specify the directory containing Dockerfile
+    docker push $IMAGE_URI
+
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
