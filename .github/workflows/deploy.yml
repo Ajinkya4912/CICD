@@ -19,6 +19,8 @@ jobs:
       - name: Log in to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
+        with:
+          region: ap-south-1 # Specify the region here
 
       - name: Build and push Docker image
         run: |
@@ -36,9 +38,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ Secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ Secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1 # Ensure the region is set here
 
       - name: Deploy to ECS
         run: |
