@@ -19,8 +19,8 @@ jobs:
       - name: Log in to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-        with:
-          region: ap-south-1 # Specify the region here
+        env:
+          AWS_REGION: ap-south-1 # Specify the region here
 
       - name: Build and push Docker image
         run: |
@@ -32,9 +32,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
