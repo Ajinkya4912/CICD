@@ -45,3 +45,5 @@ jobs:
       - name: Deploy to ECS
         run: |
           aws ecs update-service --cluster app-cluster --service app-service --force-new-deployment
+       - name: Check AWS CLI Version
+        run: aws --version
